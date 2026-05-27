@@ -1,0 +1,8 @@
+
+{
+  "FORM": { "TITLE": "ناتیوین زبانی داتا" },
+  "LANG": { "NATIVE": "ناتیوین زبان", "TARGET": "امیں زبان" },
+  "FIELDS": { "PHOTO": "پروفایل فوٹو (اختیاری)", "NAME": "پوریں نام" },
+  "ACTIONS": { "RECORD": "ریکارڈ" },
+  "PREVIEW": { "NAME_PLACEHOLDER": "تئی نام" }
+}

@@ -1,0 +1,609 @@
+<div class="main-container">
+
+  <header class="top-bar">
+    <button (click)="modoEdicion.set('formulario')">Editar Contenido</button>
+    <button (click)="modoEdicion.set('formatos')">Elegir Diseño</button>
+  </header>
+
+  <section class="left-panel">
+
+    <div *ngIf="modoEdicion() === 'formatos'" class="format-picker">
+      <h3>Elige un diseño:</h3>
+      <div class="gallery">
+        <div class="thumb" (click)="formatoSeleccionado.set('circular')">
+          <img src="assets/modelo1.jpg" alt="Circular">
+        </div>
+        <div class="thumb" (click)="formatoSeleccionado.set('profesional')">
+          <img src="assets/modelo2.jpg" alt="Profesional">
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="modoEdicion() === 'formulario'" class="form-scroll">
+
+       <div class="language-grid header-grid">
+
+      <div>
+
+        <label>Idioma natal</label>
+
+        <div class="input-with-flag">
+
+          <img src="assets/flag-es.png" alt="ES" class="flag-icon">
+
+          <select (change)="cambiarIdioma($event)">
+
+            <option value="es">Español</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <label>Idioma final</label>
+
+        <div class="input-with-flag">
+
+          <img src="assets/flag-fr.png" alt="FR" class="flag-icon">
+
+          <select (change)="cambiarIdiomaFinal($event)">
+
+            <option value="fr">Français</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <h2 class="section-title">Datos Personales</h2>
+
+    <div class="photo-section">
+
+      <button class="btn-photo" (click)="fileInput.click()">
+
+        <i class="fa-solid fa-camera"></i>
+
+        Cargar Foto
+
+      </button>
+
+      <input #fileInput type="file" (change)="onFileSelected($event)" hidden />
+
+    </div>
+
+
+
+<div class="input-with-controls-row">
+
+  <div class="field-wrap">
+
+    <label>Nombre</label>
+
+   <input
+
+  [ngModel]="nombreOriginal()"
+
+  (ngModelChange)="onNombreChange($event)"
+
+  placeholder="Nombre" />
+
+  </div>
+
+  <div class="controls">
+
+    <button class="btn-micro" (click)="grabar('nombre')">
+
+       <i class="fa-solid fa-microphone"></i> 🎤 Grabar
+
+    </button>
+
+    <button class="btn-trans" >Traducir a Francés</button>
+
+  </div>
+
+</div>
+
+
+
+<div class="row-input">
+
+  <div class="field">
+
+    <label>Puesto a postular</label>
+
+   <input
+
+  [ngModel]="puestoOriginal()"
+
+  (ngModelChange)="onPuestoChange($event)"
+
+  placeholder="Puesto" />
+
+  </div>
+
+  <div class="controls">
+
+    <button  class="btn-micro"  (click)="grabar('puesto')">
+
+      <i class="fa-solid fa-microphone"></i> 🎤 Grabar
+
+    </button>
+
+    <button class="btn-trans">Traducir a Francés</button>
+
+  </div>
+
+</div>
+
+
+
+<h2 class="section-title">Competencias</h2>
+
+<div class="input-with-controls-row">
+
+  <div class="field-wrap">
+
+<input
+
+  [ngModel]="competenciasOriginal().join(', ')"
+
+  (ngModelChange)="onCompetenciasChange($event)"
+
+  placeholder="Competencias" />
+
+  </div>
+
+  <div class="controls">
+
+    <button class="btn-micro" (click)="grabar('competencias')">
+
+      <i class="fa-solid fa-microphone">  </i>🎤 Grabar
+
+    </button>
+
+    <button class="btn-translate-small" >
+
+      Traducir
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+    <h2 class="section-title">Experiencia Profesional</h2>
+
+
+
+<div *ngFor="let exp of experiencia(); let i = index" class="card">
+
+
+
+  <div class="exp-entry-header">
+
+    Experiencia {{ i + 1 }}
+
+  </div>
+
+
+
+  <!-- EMPRESA -->
+
+  <div class="input-with-controls-row">
+
+    <input [(ngModel)]="exp.empresa" placeholder="Empresa" />
+
+
+
+    <button (click)="grabar({ type: 'experiencia', index: i, campo: 'empresa' })">
+
+      🎤
+
+    </button>
+
+  </div>
+
+
+
+  <!-- PUESTO -->
+
+  <div class="input-with-controls-row">
+
+    <input [(ngModel)]="exp.puesto" placeholder="Puesto" />
+
+
+
+    <button (click)="grabar({ type: 'experiencia', index: i, campo: 'puesto' })">
+
+      🎤
+
+    </button>
+
+  </div>
+
+
+
+  <!-- FECHAS -->
+
+  <div class="input-grid date-grid">
+
+    <input type="date" [(ngModel)]="exp.fechaInicio" />
+
+    <span>a</span>
+
+    <input type="date" [(ngModel)]="exp.fechaFin" />
+
+  </div>
+
+
+
+  <!-- LOGROS -->
+
+  <div class="input-with-controls-row">
+
+    <textarea
+
+      [(ngModel)]="exp.logrosOriginal"
+
+      placeholder="Logros"></textarea>
+
+
+
+    <button (click)="grabar({ type: 'experiencia', index: i, campo: 'logros' })">
+
+      🎤
+
+    </button>
+
+  </div>
+
+
+
+</div>
+
+
+
+<button class="btn-add" (click)="addExperiencia()">
+
+  Añadir Experiencia
+
+</button>
+
+
+
+    <h2 class="section-title">Formacion</h2>
+
+
+
+<div *ngFor="let forma of formacion(); let i = index" class="card">
+
+
+
+  <div class="exp-entry-header">
+
+    Formacion {{ i + 1 }}
+
+  </div>
+
+
+
+  <!-- titulo -->
+
+  <div class="input-with-controls-row">
+
+    <input [(ngModel)]="forma.tituloOriginal" placeholder="Titulo" />
+
+
+
+    <button (click)="grabar({ type: 'formacion', index: i, campo: 'titulo' })">
+
+      🎤
+
+    </button>
+
+  </div>
+
+
+
+  <!-- titulo -->
+
+  <div class="input-with-controls-row">
+
+    <input [(ngModel)]="forma.institucionOriginal" placeholder="Institucion" />
+
+
+
+    <button (click)="grabar({ type: 'formacion', index: i, campo: 'institucion' })">
+
+      🎤
+
+    </button>
+
+  </div>
+
+
+
+
+
+  <!-- FECHAS -->
+
+  <div class="input-grid date-grid">
+
+    <input type="date" [(ngModel)]="forma.fechaInicioFor" />
+
+    <span>a</span>
+
+    <input type="date" [(ngModel)]="forma.fechaFinFor" />
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+<button class="btn-add" (click)="addFormacion()">
+
+  Añadir Formacion
+
+</button>
+
+
+
+
+
+
+
+<h2 class="section-title">Cualidades</h2>
+
+<div class="input-with-controls-row">
+
+  <div class="field-wrap">
+
+<input
+
+  [ngModel]="cualidadesOriginal().join(', ')"
+
+  (ngModelChange)="onCualidadesChange($event)"
+
+  placeholder="Cualidades" />
+
+  </div>
+
+  <div class="controls">
+
+    <button class="btn-micro" (click)="grabar('cualidades')">
+
+      <i class="fa-solid fa-microphone">  </i>🎤 Grabar
+
+    </button>
+
+    <button class="btn-translate-small" >
+
+      Traducir
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<h2 class="section-title">Lenguajes</h2>
+
+<div class="input-with-controls-row">
+
+  <div class="field-wrap">
+
+<input
+
+  [ngModel]="lenguajesOriginal().join(', ')"
+
+  (ngModelChange)="onLenguajesChange($event)"
+
+  placeholder="Lenguajes" />
+
+  </div>
+
+  <div class="controls">
+
+    <button class="btn-micro" (click)="grabar('lenguajes')">
+
+      <i class="fa-solid fa-microphone">  </i>🎤 Grabar
+
+    </button>
+
+    <button class="btn-translate-small" >
+
+      Traducir
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<h2 class="section-title">Pasatiempos</h2>
+
+<div class="input-with-controls-row">
+
+  <div class="field-wrap">
+
+<input
+
+  [ngModel]="pasatiemposOriginal().join(', ')"
+
+  (ngModelChange)="onPasaTiemposChange($event)"
+
+  placeholder="Lenguajes" />
+
+  </div>
+
+  <div class="controls">
+
+    <button class="btn-micro" (click)="grabar('pasatiempos')">
+
+      <i class="fa-solid fa-microphone">  </i>🎤 Grabar
+
+    </button>
+
+    <button class="btn-translate-small" >
+
+      Traducir
+
+    </button>
+
+  </div>
+
+</div>
+
+
+    </div>
+  </section>
+
+  <section class="preview-container">
+  <div class="cv-preview" [ngClass]="formatoSeleccionado()">
+
+     <img [src]="fotoUrl() || 'assets/default-profile.png'" class="preview-photo">
+
+
+
+    <h1>{{ nombreTraducido() || nombreOriginal() }}</h1>
+
+    <h3>{{ puestoTraducido() || puestoOriginal() }}</h3>
+
+
+
+<h3>Competencias:</h3>
+
+<div *ngFor="let comp of (competenciasTraducido().length > 0 ? competenciasTraducido() : competenciasOriginal())">
+
+   <p>{{ comp }}</p>
+
+</div>
+
+
+
+
+
+    <hr>
+
+    <div class="preview-content">
+
+       <div *ngFor="let exp of experiencia()">
+
+    <p>
+
+      <strong>
+
+        {{ exp.empresaTraducida || exp.empresa }}
+
+      </strong>
+
+      |
+
+      {{ exp.puestoTraducido || exp.puesto }}
+
+    </p>
+
+    <p>
+
+      {{ exp.fechaInicio }} - {{ exp.fechaFin }}
+
+    </p>
+
+    <p>
+
+      {{ exp.logrosTraducido || exp.logrosOriginal }}
+
+    </p>
+
+  </div>
+
+    </div>
+
+
+
+    <div class="preview-content">
+
+       <div *ngFor="let forma of formacion()">
+
+    <p>
+
+      <strong>
+
+        {{ forma.tituloTraducido || forma.tituloOriginal  }}
+
+      </strong>
+
+      |
+
+      {{ forma.institucionTraducido || forma.institucionOriginal}}
+
+    </p>
+
+    <p>
+
+      {{ forma.fechaInicioFor }} - {{ forma.fechaFinFor }}
+
+    </p>
+
+  </div>
+
+    </div>
+
+
+
+    <h3>Cualidades:</h3>
+
+    <div *ngFor="let cual of cualidadesTraducido().length > 0 ? cualidadesTraducido() : cualidadesOriginal()">
+
+      <p>{{ cual }}</p>
+
+    </div>
+
+
+
+    <h3>Lenguajes:</h3>
+
+    <div *ngFor="let cual of lenguajesTraducido().length > 0 ? lenguajesTraducido() : lenguajesOriginal()">
+
+      <p>{{ cual }}</p>
+
+    </div>
+
+
+
+    <h3>Pasatiempos:</h3>
+
+    <div *ngFor="let pasa of pasatiemposTraducido().length > 0 ? pasatiemposTraducido() : pasatiemposOriginal()">
+
+      <p>{{ pasa }}</p>
+
+    </div>
+
+
+
+    <button class="btn-print" (click)="imprimir()">DESCARGAR CV PDF</button>
+
+
+
+    </div>
+  </section>
+</div>

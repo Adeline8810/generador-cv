@@ -1,0 +1,7 @@
+{
+  "FORM": { "TITLE": "Data in Native Language" },
+  "LANG": { "NATIVE": "Native Language", "TARGET": "Target Language" },
+  "FIELDS": { "PHOTO": "Profile photo (optional)", "NAME": "Full Name" },
+  "ACTIONS": { "RECORD": "Record" },
+  "PREVIEW": { "NAME_PLACEHOLDER": "Your Name" }
+}
