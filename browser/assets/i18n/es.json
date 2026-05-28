@@ -1,0 +1,10 @@
+{
+  "FORM": { "TITLE": "Datos en Idioma Natal" },
+  "LANG": { "NATIVE": "Idioma Natal", "TARGET": "Idioma a convertir" },
+  "FIELDS": {
+    "PHOTO": "Foto de perfil (opcional)",
+    "NAME": "Nombre Completo"
+  },
+  "ACTIONS": { "RECORD": "Grabar" },
+  "PREVIEW": { "NAME_PLACEHOLDER": "Tu Nombre" }
+}

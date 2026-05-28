@@ -1,0 +1,7 @@
+{
+  "FORM": { "TITLE": "اطلاعات به زبان مادری" },
+  "LANG": { "NATIVE": "زبان مادری", "TARGET": "زبان مقصد" },
+  "FIELDS": { "PHOTO": "عکس پروفایل (اختیاری)", "NAME": "نام کامل" },
+  "ACTIONS": { "RECORD": "ضبط" },
+  "PREVIEW": { "NAME_PLACEHOLDER": "نام شما" }
+}
