@@ -49,7 +49,7 @@ export class CvBuilder {
   @ViewChild('cvContent', { static: false }) el!: ElementRef;
   @ViewChild('leftPanel', { static: false }) leftPanel!: ElementRef;
 
-modoEdicion = signal<'formulario' | 'formatos'>('formulario');
+modoEdicion = signal<'formulario' | 'formatos' | 'preview'>('formulario');
 esVIP = signal(false);
 
 private isResizing = false;
@@ -218,13 +218,18 @@ async grabar(
       }
 ) {
   try {
-    const idiomaNatal = this.idiomaNatal() === 'es' ? 'es-ES' : 'fr-FR';
+   // const idiomaNatal = this.idiomaNatal() === 'es' ? 'es-ES' : 'fr-FR';
 
-    const textoEscuchado = await this.speechService.escuchar(idiomaNatal);
-    const textoTraducido = await this.aiService.traducirProfesional(
-      textoEscuchado,
-      this.idiomaFinal()
-    );
+    const idiomaEntrada = this.idiomaNatal(); // Ej: 'fr-FR'
+    const idiomaSalida = this.idiomaFinal();   // Ej: 'es-ES'
+
+    const textoEscuchado = await this.speechService.escuchar(idiomaEntrada);
+
+ const textoTraducido = await this.aiService.traducirProfesional(
+  textoEscuchado,
+  this.idiomaNatal(), // <--- Enviamos el origen
+  this.idiomaFinal()  // <--- Enviamos el destino
+);
 
     console.log("Texto escuchado:", textoEscuchado);
     console.log("Texto traducido:", textoTraducido);
@@ -448,18 +453,31 @@ onPasaTiemposChange(value: string) {
 }
 
 // MÉTODOS PARA EL SELECTOR DE IDIOMAS
-  cambiarIdioma(event: Event) {
+/*  cambiarIdiomaNatal(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     const lang = selectElement.value;
-    console.log('Idioma natal cambiado a:', lang);
+
     // this.translate.use(lang); // Descomenta esto si usas ngx-translate
-  }
+  }*/
+
+cambiarIdiomaNatal(event: Event) {
+  const target = event.target as HTMLSelectElement;
+  this.idiomaNatal.set(target.value);
+}
+
+/*
 
   cambiarIdiomaFinal(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     const lang = selectElement.value;
-    console.log('Idioma final (destino) seleccionado:', lang);
-  }
+
+  }*/
+
+cambiarIdiomaFinal(event: Event) {
+  const target = event.target as HTMLSelectElement;
+  this.idiomaFinal.set(target.value);
+}
+
 
 /*
   reformular(index: number) {

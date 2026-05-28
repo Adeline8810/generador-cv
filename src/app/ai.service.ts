@@ -3,25 +3,28 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class AiService {
 
-async traducirProfesional(texto: string, idiomaDestino: string): Promise<string> {
-  // Contexto para mejorar la calidad de la traducción técnica
+async traducirProfesional(texto: string, idiomaOrigenCompleto: string, idiomaDestinoCompleto: string): Promise<string> {
   const contexto = "CV profesional: ";
   const textoConContexto = `${contexto}${texto}`;
 
-  const langPair = `es|${idiomaDestino}`;
+  // Extraemos las dos primeras letras (ej: "fr" de "fr-FR")
+  const origen = idiomaOrigenCompleto.split('-')[0];
+  const destino = idiomaDestinoCompleto.split('-')[0];
+
+  const langPair = `${origen}|${destino}`;
   const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(textoConContexto)}&langpair=${langPair}`;
 
   try {
     const response = await fetch(url);
     const data = await response.json();
 
-    let traduccion = data.responseData.translatedText || "";
+    if (data.responseData && data.responseData.translatedText) {
+       let traduccion = data.responseData.translatedText;
 
-    // Expresión regular mejorada para limpiar el prefijo de forma infalible:
-    // /CV\s*(profesional|professionnel)\s*:\s*/i
-    // Explica: Busca "CV", espacios opcionales, la palabra en es/fr, dos puntos y espacios.
-    return traduccion.replace(/CV\s*(profesional|professionnel)\s*:\s*/i, "").trim();
-
+       // Limpiamos el prefijo de contexto que añadimos
+       return traduccion.replace(/CV\s*(profesional|professionnel|professional)\s*:\s*/i, "").trim();
+    }
+    return texto; // Si no hay traducción, devuelve el original
   } catch (error) {
     console.error("Error al conectar con el traductor:", error);
     return texto;
