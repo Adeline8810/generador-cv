@@ -1,4 +1,5 @@
 /* RESET SUAVE */
+
 * {
   box-sizing: border-box;
 }
@@ -25,9 +26,9 @@ body {
 
 /* TITULOS */
 .section-title {
-  font-size: 1.1rem;
+  font-size: 1.7rem;
   font-weight: 600;
-  color: #0f172a;
+  color: #07205a;
   margin: 25px 0 15px;
   border-left: 4px solid #6366f1;
   padding-left: 10px;
@@ -79,12 +80,12 @@ button {
 
 /* BOTONES PRINCIPALES */
 .btn-add {
-  background: #10b981;
+  background: #4747c3;
   color: white;
 }
 
 .btn-add:hover {
-  background: #059669;
+  background: #66708d;
 }
 
 .btn-print {
@@ -177,8 +178,8 @@ button {
 }
 
 label {
-  font-size: 12px;
-  color: #64748b;
+  font-size: 20px;
+  color: #406aa7;
   margin-bottom: 5px;
   display: block;
 }
@@ -215,12 +216,19 @@ label {
 /*****nuevos****/
 /* Contenedor principal: Divide la pantalla en dos columnas */
 .main-container {
-  display: grid;
+ /*** display: grid;**/
   grid-template-columns: 400px 1fr; /* 400px para el formulario, el resto para el CV */
   grid-template-rows: 60px 1fr;    /* Header fijo, contenido abajo */
-  height: 100vh;
+   /***height: 100vh;**/
   gap: 10px;
   overflow: hidden;
+
+  display: flex;
+  height: 100vh; /* Ocupa todo el alto de la pantalla */
+  width: 100vw;  /* Ocupa todo el ancho */
+
+  background-color: #f4f4f9; /* Color de fondo suave para la app */
+  position: relative;
 }
 
 /* Barra superior */
@@ -236,30 +244,53 @@ label {
 
 /* Panel izquierdo: El formulario tiene scroll propio */
 .left-panel {
+  width: 40%; /* Ancho inicial */
+  min-width: 250px;
   overflow-y: auto;
+  background: #f9f9f9;
   padding: 20px;
-  background: #f4f4f4;
-  border-right: 1px solid #ddd;
+}
+
+.resizer {
+  width: 10px;
+  background: #333;
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 10;
 }
 
 /* Panel derecho: Donde se ve el CV */
 .preview-container {
-  overflow-y: auto;
-  background: #ddd;
-  padding: 40px;
+
+  flex: 1 1 50%; /* Ocupa exactamente el 50% */
+  width: 50%;
+  height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente el contenido (CV y botón) */
+  justify-content: flex-start; /* Empieza desde arriba */
+  padding: 20px;
+  overflow-y: auto; /* Scroll si el CV es muy largo */
+  box-sizing: border-box;
+
+  flex-grow: 1; /* Ocupa el resto del espacio */
+  background: #222;
+  display: flex;
+
+}
+
+h3 {
+  border-bottom: 2px solid #2c3e50;
+  color: #2c3e50;
+  padding-bottom: 5px;
+  margin-top: 20px;
 }
 
 /* El CV como una "hoja" */
-.cv-preview {
-  width: 210mm;
-  min-height: 297mm;
-  background: white;
-  padding: 20mm;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  box-sizing: border-box;
-}
+
 
 /* Ejemplo de cómo los formatos cambian la estructura */
 .cv-preview.profesional {
@@ -275,14 +306,845 @@ label {
 
 /* Galería de miniaturas */
 .gallery {
-  display: flex;
+ /*display: flex;*/
   gap: 10px;
+
 }
 .thumb {
   cursor: pointer;
   border: 2px solid transparent;
-  width: 100px;
+  width: 150px;
+
 }
 .thumb:hover {
   border-color: #007bff;
+}
+
+
+/* Estilo base para que el CV se vea como una hoja */
+.cv-preview {
+  width: 210mm; /* Ancho fijo de A4 */
+  min-height: 297mm; /* Alto fijo de A4 */
+  background: #f7f3f8;
+  position: relative;
+  display: grid;
+  grid-template-columns: 33% 67%;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 10px 35px rgba(0,0,0,.25);
+  margin-bottom: 20px; /* Separación con el botón de descarga */
+  overflow: hidden; /* IMPORTANTE: Esto corta lo que se sale del borde *//
+}
+
+
+/*****modelo 2*****/
+/* =========================================================
+   CV PREMIUM EXACTO ESTILO DEL MODELO
+   CURVAS + ICONOS + FORMAS ORGÁNICAS
+========================================================= */
+
+.preview-container{
+  flex: 1; /* Ocupa el espacio restante */
+  background: #222; /* Fondo oscuro */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  padding: 40px 20px; /* Espacio arriba/abajo para que no pegue al borde */
+}
+
+/* =========================================================
+   CV PRINCIPAL
+========================================================= */
+/*
+.cv-preview{
+  width: 850px;
+  min-height: 1400px;
+
+  background: #f7f3f8;
+
+  border-radius: 42px;
+
+  overflow: hidden;
+
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 33% 67%;
+
+  font-family: 'Poppins', sans-serif;
+
+  box-shadow:
+  0 10px 35px rgba(0,0,0,.25);
+}*/
+
+.cv-preview{
+  width: 850px;
+  min-height: 1400px;
+
+  background: #f7f3f8;
+
+  border-radius: 42px;
+
+  overflow: hidden;
+
+  position: relative;
+
+  display: flex;
+
+  font-family: 'Poppins', sans-serif;
+
+  box-shadow:
+  0 10px 35px rgba(0,0,0,.25);
+}
+
+.left-column{
+  width: 33%;
+  position: relative;
+  z-index: 5;
+}
+
+.right-column{
+  width: 67%;
+  position: relative;
+  z-index: 5;
+}
+
+/* =========================================================
+   PANEL IZQUIERDO LILA
+========================================================= */
+
+.cv-preview::before{
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 33%;
+  height: 100%;
+
+  background: #e4d9e7;
+
+  z-index: 0;
+}
+
+/* =========================================================
+   FORMA ORGÁNICA SUPERIOR
+========================================================= */
+
+.cv-preview::after{
+  content: "";
+
+  position: absolute;
+
+  top: -180px;
+  left: -130px;
+
+  width: 450px;
+  height: 480px;
+
+  background: #6f2878;
+
+  border-radius:
+  55% 45% 60% 40% /
+  60% 40% 55% 45%;
+
+  transform: rotate(-10deg);
+
+  z-index: 0;
+}
+
+/* =========================================================
+   TODOS LOS BLOQUES
+========================================================= */
+
+.cv-preview > div{
+  position: relative;
+  z-index: 5;
+}
+
+/* =========================================================
+   FOTO
+========================================================= */
+
+.sector-photo{
+
+
+  display: flex;
+  justify-content: center;
+
+  margin-top: 90px;
+
+}
+
+.sector-nombre {
+
+  /* padding-top: 95px; <--- Este es el espacio original */
+  padding-top: 60px; /* REDUCIDO: Sube el nombre 35px */
+  padding-left: 55px;
+}
+
+/* ARO MORADO */
+.sector-photo::before{
+content: "";
+  position: absolute;
+  width: 230px; /* Ancho se mantiene */
+  /* height: 230px; <--- Esta es la altura original grande */
+  height: 200px; /* REDUCIDO: Compacta el aro morado */
+  background: #6f2878;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.preview-photo{
+  width: 190px;
+  height: 190px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  margin-top: 20px;
+
+  border: 10px solid #f7f3f8;
+
+  box-shadow:
+  0 10px 20px rgba(0,0,0,.15);
+}
+
+/* =========================================================
+   NOMBRE
+========================================================= */
+
+.sector-nombre{
+
+
+  padding-top: 95px;
+  padding-left: 55px;
+}
+
+.sector-nombre h1{
+  margin: 0;
+
+  color: #5f0d62;
+
+  font-size: 48px;
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   PUESTO
+========================================================= */
+
+.sector-puesto{
+  padding-left: 58px;
+  margin-top: 55px;
+}
+
+.sector-puesto h3{
+  margin: 0;
+
+  color: #5f0d62;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: .5px;
+}
+
+/* =========================================================
+   FRASE
+========================================================= */
+
+.sector-frase{
+
+
+  padding:
+  32px
+  75px
+  20px
+  58px;
+}
+
+.sector-frase h3{
+  margin: 0;
+
+  color: #5d5160;
+
+  font-size: 15px;
+
+  line-height: 1.9;
+
+  font-style: italic;
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   CONTACTO
+========================================================= */
+
+.sector-datos{
+
+
+  padding:
+  38px
+  35px
+  5px
+  45px;
+}
+
+.sector-datos::before{
+  content: "🖤  CONTACTO";
+
+  display: block;
+
+  color: #5f0d62;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  margin-bottom: 22px;
+
+  text-transform: uppercase;
+}
+
+.sector-datos h3{
+  margin-bottom: 14px;
+
+  color: #67596b;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   COMPETENCIAS
+========================================================= */
+
+.sector-competencias{
+
+  padding:
+  10px
+  74px
+  15px
+  58px;
+}
+
+.sector-competencias h3{
+  margin-bottom: 20px;
+
+  color: #5f0d62;
+
+  font-size: 23px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  border-bottom:
+  2px solid #d4afd7;
+
+  padding-bottom: 10px;
+}
+
+/* ICONO */
+.sector-competencias h3::before{
+  content: "★ ";
+}
+
+.sector-competencias p{
+  margin: 7px 0;
+
+  color: #65586a;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  position: relative;
+
+  padding-left: 18px;
+}
+
+.sector-competencias p::before{
+  content: "•";
+
+  position: absolute;
+  left: 0;
+
+  color: #6f2878;
+}
+
+/* =========================================================
+   EXPERIENCIA
+========================================================= */
+
+.sector-expeciencias{
+
+  padding:
+  10px
+  74px
+  12px
+  58px;
+}
+
+.sector-expeciencias::before{
+  content: "💼  EXPERIENCIA PROFESIONAL";
+
+  display: block;
+
+  color: #5f0d62;
+
+  font-size: 23px;
+  font-weight: 800;
+
+  margin-bottom: 22px;
+
+  border-bottom:
+  2px solid #d4afd7;
+
+  padding-bottom: 10px;
+}
+
+.preview-content{
+  margin-bottom: 18px;
+}
+
+.preview-content p{
+  margin: 6px 0;
+
+  color: #5d5261;
+
+  font-size: 11px;
+
+  line-height: 1.9;
+}
+
+.preview-content strong{
+  color: #5f0d62;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   FORMACION
+========================================================= */
+
+.sector-formacion{
+  padding:
+  12px
+  74px
+  12px
+  58px;
+}
+
+.sector-formacion::before{
+  content: "🎓  FORMACIÓN / DIPLOMAS";
+
+  display: block;
+
+  color: #5f0d62;
+
+  font-size: 23px;
+  font-weight: 800;
+
+  margin-bottom: 22px;
+
+  border-bottom:
+  2px solid #d4afd7;
+
+  padding-bottom: 10px;
+}
+
+/* =========================================================
+   CUALIDADES
+========================================================= */
+
+.sector-cualidades{
+
+  padding:
+  12px
+  35px
+  5px
+  45px;
+}
+
+.sector-cualidades h3{
+  margin-bottom: 18px;
+
+  color: #5f0d62;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+}
+
+.sector-cualidades h3::before{
+  content: "👍 ";
+}
+
+.sector-cualidades p{
+  margin: 7px 0;
+
+  color: #65586a;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+
+  padding-left: 16px;
+
+  position: relative;
+}
+
+.sector-cualidades p::before{
+  content: "•";
+
+  position: absolute;
+  left: 0;
+
+  color: #6f2878;
+}
+
+/* =========================================================
+   LENGUAJES
+========================================================= */
+
+.sector-lenguajes{
+
+
+  padding:
+  12px
+  35px
+  5px
+  45px;
+}
+
+.sector-lenguajes h3{
+  margin-bottom: 18px;
+
+  color: #5f0d62;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+}
+
+.sector-lenguajes h3::before{
+  content: "🌐 ";
+}
+
+.sector-lenguajes p{
+  margin: 7px 0;
+
+  color: #65586a;
+
+  font-size: 11px;
+
+  padding-left: 16px;
+
+  position: relative;
+}
+
+.sector-lenguajes p::before{
+  content: "•";
+
+  position: absolute;
+  left: 0;
+
+  color: #6f2878;
+}
+
+/* =========================================================
+   PASATIEMPOS
+========================================================= */
+
+.sector-pasatiempos{
+
+
+  padding:
+  12px
+  35px
+  40px
+  45px;
+}
+
+.sector-pasatiempos h3{
+  margin-bottom: 18px;
+
+  color: #5f0d62;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+}
+
+.sector-pasatiempos h3::before{
+  content: "♡ ";
+}
+
+.sector-pasatiempos p{
+  margin: 7px 0;
+
+  color: #65586a;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+
+  padding-left: 16px;
+
+  position: relative;
+}
+
+.sector-pasatiempos p::before{
+  content: "•";
+
+  position: absolute;
+  left: 0;
+
+  color: #6f2878;
+}
+
+/* =========================================================
+   BOTON
+========================================================= */
+
+.sector-opciones{
+  grid-column: span 2;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 35px;
+}
+
+.btn-print{
+  /*
+  background: #6f2878;
+
+  color: white;
+
+  border: none;
+
+  padding:
+  14px
+  30px;
+
+  border-radius: 12px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .3s;*/
+  width: auto; /* Ancho automático para el botón */
+  margin-top: 10px;
+}
+
+.btn-print:hover{
+  background: #54155c;
+
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   CIRCULO ABAJO DERECHA
+========================================================= */
+
+.sector-formacion::after{
+  content: "";
+
+  position: absolute;
+
+  right: -140px;
+  bottom: -220px;
+
+  width: 320px;
+  height: 320px;
+
+  background: #7b3984;
+
+  border-radius: 50%;
+
+  z-index: -1;
+}
+
+/* =========================================================
+   LINEA CURVA ABAJO IZQUIERDA
+========================================================= */
+
+.sector-pasatiempos::after{
+  content: "";
+
+  position: absolute;
+
+  left: 10px;
+  bottom: -80px;
+
+  width: 170px;
+  height: 170px;
+
+  border:
+  5px solid rgba(177,138,184,.5);
+
+  border-radius: 50%;
+
+  border-right-color: transparent;
+  border-top-color: transparent;
+
+  transform: rotate(20deg);
+}
+
+/* =========================================================
+   HR
+========================================================= */
+
+hr{
+  display: none;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+  .cv-preview{
+    grid-template-columns: 1fr;
+  }
+
+  .cv-preview::before{
+    width: 100%;
+    height: 390px;
+  }
+
+  .sector-photo,
+  .sector-nombre,
+  .sector-puesto,
+  .sector-frase,
+  .sector-datos,
+  .sector-competencias,
+  .sector-expeciencias,
+  .sector-formacion,
+  .sector-cualidades,
+  .sector-lenguajes,
+  .sector-pasatiempos{
+
+
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .sector-photo{
+    margin-top: 40px;
+  }
+
+  .sector-nombre{
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .sector-puesto{
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .sector-frase{
+    text-align: center;
+  }
+
+  .sector-nombre h1{
+    font-size: 34px;
+  }
+
+
+}
+
+@media print {
+  .cv-preview {
+    width: 210mm;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+.fixed-actions {
+  margin-top: 20px;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+.btn-print {
+  background-color: #28a745; /* Verde llamativo */
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-print:hover {
+  background-color: #218838;
+}
+
+
+/**estilos reposnsivos***/
+.top-bar {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #333;
+}
+
+/* Base móvil: todo ocupa el 100% */
+.left-panel, .preview-container {
+  display: none; /* Ocultos por defecto en móvil */
+  width: 100%;
+}
+
+.left-panel.active, .preview-container.active {
+  display: block; /* Solo se muestra el activo */
+}
+
+/* Escritorio: Cuando la pantalla es ancha (> 768px) */
+@media (min-width: 768px) {
+  .top-bar { display: none; } /* Opcional: ocultar botones en escritorio */
+
+  .main-container {
+    display: flex;
+  }
+
+  .left-panel, .preview-container {
+    display: block;
+    width: 50%;
+    height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+
+.hidden {
+  display: none !important;
 }
