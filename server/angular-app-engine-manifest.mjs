@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/',
+  basePath: 'https://adeline8810.github.io/generador-cv',
   allowedHosts: [],
   supportedLocales: {
   "en-US": ""
