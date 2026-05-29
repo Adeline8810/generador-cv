@@ -230,6 +230,7 @@ button{
   width:67%;
   position:relative;
   z-index:5;
+
 }
 
 .preview-photo{
@@ -296,6 +297,7 @@ z-index:5;
 width:67%;
 position:relative;
 z-index:5;
+padding-left: 26px;
 }
 
 /* =========================================================
@@ -487,28 +489,7 @@ padding-bottom:10px;
 content:"★ ";
 }
 
-.modelo2 .sector-competencias p{
-margin:7px 0;
 
-color:#65586a;
-
-font-size:12px;
-
-line-height:1.7;
-
-position:relative;
-
-padding-left:18px;
-}
-
-.modelo2 .sector-competencias p::before{
-content:"•";
-
-position:absolute;
-left:0;
-
-color:#6f2878;
-}
 
 /* =========================================================
 EXPERIENCIA
@@ -524,22 +505,29 @@ padding:
 position:relative;
 }
 
-.modelo2 .sector-expeciencias::before{
-content:"💼 EXPERIENCIA PROFESIONAL";
 
-display:block;
+.modelo2 .sector-expeciencias h3{
+margin-bottom:20px;
 
 color:#5f0d62;
 
 font-size:23px;
 font-weight:800;
 
-margin-bottom:22px;
+text-transform:uppercase;
 
 border-bottom:2px solid #d4afd7;
 
 padding-bottom:10px;
 }
+
+.modelo2 .sector-expeciencias h3::before{
+content:"💼 ";
+}
+
+
+
+
 
 .modelo2 .preview-content{
 margin-bottom:18px;
@@ -577,22 +565,29 @@ padding:
 position:relative;
 }
 
-.modelo2 .sector-formacion::before{
-content:"🎓 FORMACIÓN / DIPLOMAS";
 
-display:block;
+
+.modelo2 .sector-formacion h3{
+margin-bottom:20px;
 
 color:#5f0d62;
 
 font-size:23px;
 font-weight:800;
 
-margin-bottom:22px;
+text-transform:uppercase;
 
 border-bottom:2px solid #d4afd7;
 
 padding-bottom:10px;
 }
+
+.modelo2 .sector-formacion h3::before{
+content:"🎓";
+}
+
+
+
 
 /* =========================================================
 CUALIDADES
@@ -818,7 +813,13 @@ hr{
    PRINT
 ========================================================= */
 
+
 /**para el celular*/
+
+
+
+
+
 
 
 /****MODELO AZUL****/
@@ -909,6 +910,7 @@ hr{
   width:67%;
   position:relative;
   z-index:5;
+  padding-left: 26px;
 }
 
 /* =========================================================
@@ -1507,6 +1509,7 @@ hr{
   width:67%;
   position:relative;
   z-index:5;
+  padding-left: 26px;
 }
 
 /* =========================================================
@@ -2023,9 +2026,6 @@ hr{
 /* =========================================================
    SOLUCIÓN GLOBAL PARA TODOS LOS MODELOS (MÓVIL)
    ========================================================= */
-/* =========================================================
-   SOLUCIÓN GLOBAL PARA TODOS LOS MODELOS (MÓVIL)
-   ========================================================= */
 @media screen and (max-width: 900px) {
 
   /* 1. Resetear el contenedor principal */
@@ -2035,16 +2035,18 @@ hr{
   .cv-preview.modelo4 {
     width: 100% !important;
     display: flex !important;
-    flex-direction: column !important; /* IMPORTANTE: Para que los elementos se apilen hacia abajo */
-    overflow-x: hidden !important;
+    overflow-x: hidden !important; /* Elimina scroll lateral */
     padding: 15px !important;
     min-height: auto !important;
   }
 
-  .preview-container {
-    overflow-x: auto;
-    padding: 20px;
+   .preview-container{
+    overflow-x:auto;
+    padding:20px;
   }
+
+  /* 2. Forzar columnas a vertical */
+
 
   /* 3. Desactivar elementos decorativos que rompen el layout */
   [class*="modelo"]::before,
@@ -2054,32 +2056,25 @@ hr{
     display: none !important;
   }
 
-  /* 4. Resetear paddings Y AÑADIR MARGENES para separar los bloques */
+  /* 4. Resetear paddings para que el contenido no se salga */
   [class*="modelo"] section,
   [class*="modelo"] div[class*="sector-"] {
     padding-left: 10px !important;
     padding-right: 10px !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    margin-bottom: 25px !important; /* <--- ESTO SEPARA LOS BLOQUES (Experiencia, Formación, etc) */
   }
 
-  /* 5. Ajustar tipografía y separar párrafos internos */
-  [class*="modelo"] h1 { font-size: 22px !important; text-align: center !important; margin-bottom: 10px !important; }
-  [class*="modelo"] h3 { font-size: 16px !important; margin-bottom: 8px !important; }
-
-  /* ESTO SEPARA CADA LÍNEA DE TEXTO DENTRO DE LOS BLOQUES */
-  [class*="modelo"] p {
-    font-size: 13px !important;
-    margin-bottom: 12px !important; /* <--- SEPARA CADA PÁRRAFO O LÍNEA */
-    line-height: 1.5 !important;
-  }
+  /* 5. Ajustar tipografía para móviles */
+  [class*="modelo"] h1 { font-size: 22px !important; text-align: center !important; }
+  [class*="modelo"] h3 { font-size: 16px !important; }
+  [class*="modelo"] p { font-size: 13px !important; }
 
   /* 6. Foto centrada y pequeña */
   [class*="modelo"] .preview-photo {
     width: 100px !important;
     height: 100px !important;
-    margin: 15px auto 25px auto !important; /* Separación extra debajo de la foto */
+    margin: 15px auto !important;
     display: block !important;
   }
 }
