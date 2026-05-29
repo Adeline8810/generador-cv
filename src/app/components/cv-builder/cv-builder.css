@@ -2097,19 +2097,20 @@ hr{
     padding:15px;
   }
 
-  .preview-container{
+.preview-container{
 
-    width:100%;
-    overflow-x:auto;
+  width:100%;
+  overflow-x:auto;
 
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
 
-    padding:15px 0;
+  padding:15px 0;
 
-    background:#111;
-  }
+  background:#111;
+  box-sizing:border-box;
+}
 
   .resizer{
     display:none;
@@ -2119,23 +2120,23 @@ hr{
      CV RESPONSIVE
   ========================= */
 
-  .cv-preview,
-  .cv-preview.modelo2,
-  .cv-preview.modelo3,
-  .cv-preview.modelo4{
+.cv-preview,
+.cv-preview.modelo2,
+.cv-preview.modelo3,
+.cv-preview.modelo4{
 
-    width:95vw !important;
-    min-width:95vw !important;
+  width:100% !important;
+  max-width:850px;
 
-    min-height:auto !important;
+  min-height:auto !important;
 
-    border-radius:20px;
+  border-radius:20px;
 
-    transform:scale(1);
-    transform-origin:top center;
+  transform:scale(1);
+  transform-origin:top center;
 
-    overflow:hidden;
-  }
+  overflow:hidden;
+}
 
   /* COLUMNAS */
   .left-column{
