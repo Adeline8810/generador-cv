@@ -2074,7 +2074,6 @@ hr{
 /* =========================================================
    MOBILE PERFECT FIX
 ========================================================= */
-
 @media screen and (max-width: 900px){
 
   body{
@@ -2088,192 +2087,97 @@ hr{
     flex-direction:column;
     width:100%;
     height:auto;
-    overflow:hidden;
   }
 
   .left-panel{
     width:100%;
-    min-width:100%;
     padding:15px;
   }
 
-.preview-container{
-
-  width:100%;
-  overflow-x:auto;
-
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-
-  padding:15px 0;
-
-  background:#111;
-  box-sizing:border-box;
-}
+  .preview-container{
+    width:100%;
+    padding:10px;
+    overflow:auto;
+    background:#111;
+  }
 
   .resizer{
     display:none;
   }
 
-  /* =========================
-     CV RESPONSIVE
-  ========================= */
+  /* CV */
+  .cv-preview,
+  .cv-preview.modelo2,
+  .cv-preview.modelo3,
+  .cv-preview.modelo4{
 
-.cv-preview,
-.cv-preview.modelo2,
-.cv-preview.modelo3,
-.cv-preview.modelo4{
+    width:100% !important;
+    max-width:100% !important;
 
-  width:100% !important;
-  max-width:850px;
+    min-height:auto;
 
-  min-height:auto !important;
+    border-radius:0;
 
-  border-radius:20px;
-
-  transform:scale(1);
-  transform-origin:top center;
-
-  overflow:hidden;
-}
-
-  /* COLUMNAS */
-  .left-column{
-    width:33% !important;
+    display:flex;
+    flex-direction:column;
   }
 
+  /* COLUMNAS */
+  .left-column,
   .right-column{
-    width:67% !important;
+    width:100% !important;
   }
 
   /* FOTO */
   .modelo2 .preview-photo,
   .modelo3 .preview-photo,
   .modelo4 .preview-photo{
-
-    width:110px;
-    height:110px;
-    border-width:6px;
-  }
-
-  .modelo2 .sector-photo::before,
-  .modelo3 .sector-photo::before,
-  .modelo4 .sector-photo::before{
-
     width:140px;
     height:140px;
-  }
-
-  .modelo2 .sector-photo,
-  .modelo3 .sector-photo,
-  .modelo4 .sector-photo{
-
-    margin-top:50px;
   }
 
   /* NOMBRE */
   .modelo2 .sector-nombre h1,
   .modelo3 .sector-nombre h1,
   .modelo4 .sector-nombre h1{
+    font-size:28px;
+  }
 
-    font-size:24px;
+  /* TEXTOS */
+  .modelo2 p,
+  .modelo3 p,
+  .modelo4 p{
+    font-size:13px !important;
   }
 
   /* TITULOS */
   .modelo2 h3,
   .modelo3 h3,
   .modelo4 h3{
-
-    font-size:14px !important;
-  }
-
-  /* TEXTO */
-  .modelo2 p,
-  .modelo3 p,
-  .modelo4 p{
-
-    font-size:9px !important;
-    line-height:1.5;
+    font-size:18px !important;
   }
 
   /* ESPACIADOS */
-  .modelo2 .sector-datos,
-  .modelo2 .sector-cualidades,
-  .modelo2 .sector-lenguajes,
-  .modelo2 .sector-pasatiempos,
-
-  .modelo3 .sector-datos,
-  .modelo3 .sector-cualidades,
-  .modelo3 .sector-lenguajes,
-  .modelo3 .sector-pasatiempos,
-
-  .modelo4 .sector-datos,
-  .modelo4 .sector-cualidades,
-  .modelo4 .sector-lenguajes,
-  .modelo4 .sector-pasatiempos{
-
+  .modelo2 section,
+  .modelo3 section,
+  .modelo4 section{
     padding-left:20px !important;
-    padding-right:15px !important;
+    padding-right:20px !important;
   }
 
-  .modelo2 .sector-competencias,
-  .modelo2 .sector-expeciencias,
-  .modelo2 .sector-formacion,
-
-  .modelo3 .sector-competencias,
-  .modelo3 .sector-expeciencias,
-  .modelo3 .sector-formacion,
-
-  .modelo4 .sector-competencias,
-  .modelo4 .sector-expeciencias,
-  .modelo4 .sector-formacion{
-
-    padding-left:25px !important;
-    padding-right:25px !important;
-  }
-
-  /* FORMAS */
+  /* QUITAR FORMAS GIGANTES */
   .cv-preview.modelo2::after,
   .cv-preview.modelo3::after,
-  .cv-preview.modelo4::after{
-
-    width:260px;
-    height:260px;
-
-    top:-120px;
-    left:-100px;
-  }
+  .cv-preview.modelo4::after,
 
   .modelo2 .sector-formacion::after,
   .modelo3 .sector-formacion::after,
-  .modelo4 .sector-formacion::after{
-
-    width:180px;
-    height:180px;
-
-    right:-80px;
-    bottom:-100px;
-  }
+  .modelo4 .sector-formacion::after,
 
   .modelo2 .sector-pasatiempos::after,
   .modelo3 .sector-pasatiempos::after,
   .modelo4 .sector-pasatiempos::after{
-
-    width:110px;
-    height:110px;
-  }
-
-  /* BOTONES */
-  .top-bar{
-    flex-wrap:wrap;
-    gap:10px;
-    padding:10px;
-  }
-
-  .top-bar button{
-    flex:1 1 calc(50% - 10px);
-    font-size:14px;
+    display:none;
   }
 
 }
