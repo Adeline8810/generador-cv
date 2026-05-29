@@ -2071,113 +2071,49 @@ hr{
 }
 
 
-/* =========================================================
-   MOBILE PERFECT FIX
-========================================================= */
-@media screen and (max-width: 900px){
-
-  body{
-    margin:0;
-    padding:0;
-    overflow-x:hidden;
+@media screen and (max-width: 900px) {
+  /* 1. Reset base para todos los modelos */
+  .cv-preview {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-x: hidden; /* ¡CRUCIAL! Esto elimina el scroll horizontal */
   }
 
-  .main-container{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    height:auto;
+  /* 2. Forzar que TODAS las columnas ocupen el 100% */
+  .cv-preview [class*="column"] {
+    width: 100% !important;
+    flex: 0 0 100% !important;
   }
 
-  .left-panel{
-    width:100%;
-    padding:15px;
+  /* 3. Limpieza de todos los paddings internos (Evita que el contenido se salga) */
+  [class*="modelo"] section,
+  [class*="modelo"] [class*="sector-"] {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
   }
 
-  .preview-container{
-    width:100%;
-    padding:10px;
-    overflow:auto;
-    background:#111;
+  /* 4. Ocultar todos los elementos decorativos absolutos que rompen el móvil */
+  [class*="modelo"]::after,
+  [class*="modelo"]::before,
+  [class*="modelo"] [class*="::after"],
+  [class*="modelo"] [class*="::before"] {
+    /* Solo ocultamos los que son decorativos;
+       si alguno es necesario, se puede listar aquí */
+    display: none !important;
   }
 
-  .resizer{
-    display:none;
+  /* 5. Re-ajuste de tipografía para evitar desbordes */
+  [class*="modelo"] h1 { font-size: 24px !important; line-height: 1.2 !important; }
+  [class*="modelo"] h3 { font-size: 16px !important; }
+  [class*="modelo"] p { font-size: 12px !important; line-height: 1.4 !important; }
+
+  /* 6. Centrado de fotos */
+  [class*="modelo"] .preview-photo {
+    width: 120px !important;
+    height: 120px !important;
+    margin: 20px auto !important;
+    display: block !important;
   }
-
-  /* CV */
-  .cv-preview,
-  .cv-preview.modelo2,
-  .cv-preview.modelo3,
-  .cv-preview.modelo4{
-
-    width:100% !important;
-    max-width:100% !important;
-
-    min-height:auto;
-
-    border-radius:0;
-
-    display:flex;
-    flex-direction:column;
-  }
-
-  /* COLUMNAS */
-  .left-column,
-  .right-column{
-    width:100% !important;
-  }
-
-  /* FOTO */
-  .modelo2 .preview-photo,
-  .modelo3 .preview-photo,
-  .modelo4 .preview-photo{
-    width:140px;
-    height:140px;
-  }
-
-  /* NOMBRE */
-  .modelo2 .sector-nombre h1,
-  .modelo3 .sector-nombre h1,
-  .modelo4 .sector-nombre h1{
-    font-size:28px;
-  }
-
-  /* TEXTOS */
-  .modelo2 p,
-  .modelo3 p,
-  .modelo4 p{
-    font-size:13px !important;
-  }
-
-  /* TITULOS */
-  .modelo2 h3,
-  .modelo3 h3,
-  .modelo4 h3{
-    font-size:18px !important;
-  }
-
-  /* ESPACIADOS */
-  .modelo2 section,
-  .modelo3 section,
-  .modelo4 section{
-    padding-left:20px !important;
-    padding-right:20px !important;
-  }
-
-  /* QUITAR FORMAS GIGANTES */
-  .cv-preview.modelo2::after,
-  .cv-preview.modelo3::after,
-  .cv-preview.modelo4::after,
-
-  .modelo2 .sector-formacion::after,
-  .modelo3 .sector-formacion::after,
-  .modelo4 .sector-formacion::after,
-
-  .modelo2 .sector-pasatiempos::after,
-  .modelo3 .sector-pasatiempos::after,
-  .modelo4 .sector-pasatiempos::after{
-    display:none;
-  }
-
 }
