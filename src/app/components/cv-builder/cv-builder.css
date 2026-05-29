@@ -812,31 +812,7 @@ hr{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:900px){
 
-  .main-container{
-    display:flex;
-    flex-direction:column;
-    height:auto;
-  }
-
-  .left-panel,
-  .preview-container{
-    width:100%;
-  }
-
-  .cv-preview{
-    width:100%;
-    min-height:auto;
-    flex-direction:column;
-  }
-
-  .left-column,
-  .right-column{
-    width:100%;
-  }
-
-}
 
 /* =========================================================
    PRINT
