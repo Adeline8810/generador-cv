@@ -2072,15 +2072,14 @@ hr{
 
 
 /* =========================================================
-   MOBILE REAL SCALE
-   Mantiene el diseño desktop completo
+   MOBILE PERFECT VIEW
 ========================================================= */
 
 @media screen and (max-width: 900px){
 
   body{
-    padding:0;
     margin:0;
+    padding:0;
     overflow-x:hidden;
   }
 
@@ -2090,16 +2089,20 @@ hr{
   }
 
   .preview-container{
+
     width:100%;
     overflow-x:auto;
 
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
+    align-items:flex-start;
 
-    padding:20px 0;
+    padding:10px;
+
+    background:#111;
   }
 
-  /* CV COMPLETO ESCALADO */
+  /* CV */
   .cv-preview,
   .cv-preview.modelo2,
   .cv-preview.modelo3,
@@ -2108,22 +2111,19 @@ hr{
     width:850px !important;
     min-width:850px !important;
 
-    transform:scale(.43);
-    transform-origin:top center;
-
-    margin-bottom:-700px;
+    zoom:0.45;
   }
 
   /* BOTONES */
   .top-bar{
     flex-wrap:wrap;
     gap:10px;
-    padding:15px;
+    padding:10px;
   }
 
   .top-bar button{
-    flex:1 1 auto;
-    min-width:140px;
+    flex:1 1 45%;
+    font-size:14px;
   }
 
 }
