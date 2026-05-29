@@ -866,67 +866,6 @@ hr{
 }
 
 /**para el celular*/
-/* =========================================================
-   AJUSTES RESPONSIVE PARA MODELO 2
-   ========================================================= */
-@media(max-width: 900px) {
-  /* 1. Asegurar que el CV tome todo el ancho y sea fluido */
-  .cv-preview.modelo2 {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  /* 2. Ajustar las columnas para que se apilen correctamente */
-  .modelo2 .left-column,
-  .modelo2 .right-column {
-    width: 100% !important;
-    padding: 10px;
-  }
-
-  /* 3. Escalar los elementos decorativos (Círculos y Curvas) */
-  .modelo2::before { width: 100%; }
-
-  .modelo2 .sector-photo { margin-top: 40px; }
-
-  .modelo2 .sector-nombre {
-    padding-top: 20px;
-    padding-left: 20px;
-    text-align: center;
-  }
-
-  .modelo2 .sector-nombre h1 { font-size: 32px; }
-
-  /* 4. Ajustar espaciados internos de los sectores */
-  .modelo2 .sector-datos,
-  .modelo2 .sector-cualidades,
-  .modelo2 .sector-lenguajes,
-  .modelo2 .sector-pasatiempos,
-  .modelo2 .sector-competencias,
-  .modelo2 .sector-expeciencias,
-  .modelo2 .sector-formacion {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-  }
-
-  /* 5. Ocultar o reducir elementos decorativos que rompen el layout móvil */
-  .modelo2 .sector-formacion::after,
-  .modelo2 .sector-pasatiempos::after {
-    display: none; /* Oculta elementos que se salen de pantalla en móvil */
-  }
-
-  /* 6. Ajustar la foto para que no sea gigante */
-  .modelo2 .preview-photo {
-    width: 150px;
-    height: 150px;
-    border-width: 5px;
-  }
-
-  .modelo2 .sector-photo::before {
-    width: 170px;
-    height: 170px;
-  }
-}
 
 
 
@@ -2129,4 +2068,251 @@ hr{
   border-top-color:transparent;
 
   transform:rotate(20deg);
+}
+
+
+/* =========================================================
+   RESPONSIVE REAL PARA CELULAR
+========================================================= */
+
+@media screen and (max-width: 900px){
+
+  body{
+    padding:0;
+    overflow-x:hidden;
+  }
+
+  /* CONTENEDOR GENERAL */
+  .main-container{
+    display:flex !important;
+    flex-direction:column !important;
+
+    width:100%;
+    height:auto;
+
+    overflow:visible;
+  }
+
+  /* PANEL FORMULARIO */
+  .left-panel{
+    width:100% !important;
+    min-width:100% !important;
+
+    padding:15px;
+
+    overflow:visible;
+  }
+
+  /* OCULTAR RESIZER */
+  .resizer{
+    display:none;
+  }
+
+  /* PREVIEW */
+  .preview-container{
+    width:100% !important;
+
+    padding:15px 10px 40px;
+
+    overflow-x:hidden;
+  }
+
+  /* HOJA CV */
+  .cv-preview,
+  .cv-preview.modelo2,
+  .cv-preview.modelo3,
+  .cv-preview.modelo4{
+
+    width:100% !important;
+    min-height:auto !important;
+
+    border-radius:0;
+
+    display:flex !important;
+    flex-direction:column !important;
+
+    overflow:hidden;
+  }
+
+  /* COLUMNAS */
+  .left-column,
+  .right-column{
+    width:100% !important;
+  }
+
+  /* FONDO LATERAL */
+  .cv-preview.modelo2::before,
+  .cv-preview.modelo3::before,
+  .cv-preview.modelo4::before{
+
+    width:100%;
+    height:420px;
+  }
+
+  /* FIGURA SUPERIOR */
+  .cv-preview.modelo2::after,
+  .cv-preview.modelo3::after,
+  .cv-preview.modelo4::after{
+
+    width:320px;
+    height:320px;
+
+    left:-100px;
+    top:-120px;
+  }
+
+  /* FOTO */
+  .modelo2 .sector-photo,
+  .modelo3 .sector-photo,
+  .modelo4 .sector-photo{
+
+    margin-top:40px;
+  }
+
+  .modelo2 .preview-photo,
+  .modelo3 .preview-photo,
+  .modelo4 .preview-photo{
+
+    width:150px;
+    height:150px;
+  }
+
+  .modelo2 .sector-photo::before,
+  .modelo3 .sector-photo::before,
+  .modelo4 .sector-photo::before{
+
+    width:180px;
+    height:180px;
+  }
+
+  /* NOMBRE */
+  .modelo2 .sector-nombre,
+  .modelo3 .sector-nombre,
+  .modelo4 .sector-nombre{
+
+    padding-top:25px;
+    padding-left:20px;
+    padding-right:20px;
+
+    text-align:center;
+  }
+
+  .modelo2 .sector-nombre h1,
+  .modelo3 .sector-nombre h1,
+  .modelo4 .sector-nombre h1{
+
+    font-size:32px;
+  }
+
+  /* PUESTO */
+  .modelo2 .sector-puesto,
+  .modelo3 .sector-puesto,
+  .modelo4 .sector-puesto{
+
+    padding-left:20px;
+    padding-right:20px;
+
+    margin-top:20px;
+
+    text-align:center;
+  }
+
+  /* FRASE */
+  .modelo2 .sector-frase,
+  .modelo3 .sector-frase,
+  .modelo4 .sector-frase{
+
+    padding:20px;
+
+    text-align:center;
+  }
+
+  /* SECCIONES */
+  .modelo2 .sector-datos,
+  .modelo2 .sector-cualidades,
+  .modelo2 .sector-lenguajes,
+  .modelo2 .sector-pasatiempos,
+  .modelo2 .sector-competencias,
+  .modelo2 .sector-expeciencias,
+  .modelo2 .sector-formacion,
+
+  .modelo3 .sector-datos,
+  .modelo3 .sector-cualidades,
+  .modelo3 .sector-lenguajes,
+  .modelo3 .sector-pasatiempos,
+  .modelo3 .sector-competencias,
+  .modelo3 .sector-expeciencias,
+  .modelo3 .sector-formacion,
+
+  .modelo4 .sector-datos,
+  .modelo4 .sector-cualidades,
+  .modelo4 .sector-lenguajes,
+  .modelo4 .sector-pasatiempos,
+  .modelo4 .sector-competencias,
+  .modelo4 .sector-expeciencias,
+  .modelo4 .sector-formacion{
+
+    padding-left:20px !important;
+    padding-right:20px !important;
+  }
+
+  /* TITULOS */
+  .modelo2 h3,
+  .modelo3 h3,
+  .modelo4 h3{
+
+    font-size:18px !important;
+  }
+
+  /* TEXTO */
+  .modelo2 p,
+  .modelo3 p,
+  .modelo4 p{
+
+    font-size:13px !important;
+  }
+
+  /* EXPERIENCIA */
+  .preview-content{
+    overflow-wrap:break-word;
+  }
+
+  /* BOTONES */
+  .fixed-actions{
+    padding:20px 10px;
+  }
+
+  .btn-print{
+    width:100%;
+    font-size:16px;
+  }
+
+  /* FORMULARIO RESPONSIVE */
+  .row-input,
+  .input-with-controls-row{
+
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .controls{
+    width:100%;
+    display:flex;
+    gap:10px;
+  }
+
+  .controls button{
+    flex:1;
+  }
+
+  /* INPUT GRID */
+  .input-grid{
+    grid-template-columns:1fr;
+  }
+
+  .date-grid{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
 }
