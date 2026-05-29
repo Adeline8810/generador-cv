@@ -2023,27 +2023,55 @@ hr{
 /* =========================================================
    SOLUCIÓN GLOBAL PARA TODOS LOS MODELOS (MÓVIL)
    ========================================================= */
-@media screen and (max-width:900px){
+@media screen and (max-width: 900px) {
 
+  /* 1. Resetear el contenedor principal */
   .cv-preview,
   .cv-preview.modelo2,
   .cv-preview.modelo3,
-  .cv-preview.modelo4{
-
-    width:850px !important;
-
-    min-height:auto !important;
-
-    overflow-x:auto !important;
-
-    display:flex !important;
-
-    flex-direction:row !important;
+  .cv-preview.modelo4 {
+    width: 100% !important;
+    display: flex !important;
+    overflow-x: hidden !important; /* Elimina scroll lateral */
+    padding: 15px !important;
+    min-height: auto !important;
   }
 
-  .preview-container{
+   .preview-container{
     overflow-x:auto;
     padding:20px;
   }
 
+  /* 2. Forzar columnas a vertical */
+
+
+  /* 3. Desactivar elementos decorativos que rompen el layout */
+  [class*="modelo"]::before,
+  [class*="modelo"]::after,
+  [class*="modelo"] [class*="::before"],
+  [class*="modelo"] [class*="::after"] {
+    display: none !important;
+  }
+
+  /* 4. Resetear paddings para que el contenido no se salga */
+  [class*="modelo"] section,
+  [class*="modelo"] div[class*="sector-"] {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 5. Ajustar tipografía para móviles */
+  [class*="modelo"] h1 { font-size: 22px !important; text-align: center !important; }
+  [class*="modelo"] h3 { font-size: 16px !important; }
+  [class*="modelo"] p { font-size: 13px !important; }
+
+  /* 6. Foto centrada y pequeña */
+  [class*="modelo"] .preview-photo {
+    width: 100px !important;
+    height: 100px !important;
+    margin: 15px auto !important;
+    display: block !important;
+  }
 }
