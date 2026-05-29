@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch"
+    "watch": "ng build --watch",
+    "deploy": "git add . && git commit -m \"Deploy CV App\" && git push origin main && ng build --configuration production --base-href \"https://adeline8810.github.io/generador-cv/\" && npx angular-cli-ghpages --dir=dist/cv-ia-frontend/browser"
   },
   "private": true,
   "packageManager": "npm@9.6.5",
