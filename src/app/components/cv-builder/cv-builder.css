@@ -808,6 +808,64 @@ hr{
   display:none;
 }
 
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+  .main-container{
+    display:flex;
+    flex-direction:column;
+    height:auto;
+  }
+
+  .left-panel,
+  .preview-container{
+    width:100%;
+  }
+
+  .cv-preview{
+    width:100%;
+    min-height:auto;
+    flex-direction:column;
+  }
+
+  .left-column,
+  .right-column{
+    width:100%;
+  }
+
+}
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+  .top-bar,
+  .left-panel,
+  .resizer,
+  .fixed-actions{
+    display:none !important;
+  }
+
+  .preview-container{
+    background:white;
+    padding:0;
+  }
+
+  .cv-preview{
+    width:210mm;
+    min-height:297mm;
+    margin:0;
+    box-shadow:none;
+  }
+
+}
+
+/**para el celular*/
 
 
 
