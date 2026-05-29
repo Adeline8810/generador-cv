@@ -2023,6 +2023,9 @@ hr{
 /* =========================================================
    SOLUCIÓN GLOBAL PARA TODOS LOS MODELOS (MÓVIL)
    ========================================================= */
+/* =========================================================
+   SOLUCIÓN GLOBAL PARA TODOS LOS MODELOS (MÓVIL)
+   ========================================================= */
 @media screen and (max-width: 900px) {
 
   /* 1. Resetear el contenedor principal */
@@ -2032,18 +2035,16 @@ hr{
   .cv-preview.modelo4 {
     width: 100% !important;
     display: flex !important;
-    overflow-x: hidden !important; /* Elimina scroll lateral */
+    flex-direction: column !important; /* IMPORTANTE: Para que los elementos se apilen hacia abajo */
+    overflow-x: hidden !important;
     padding: 15px !important;
     min-height: auto !important;
   }
 
-   .preview-container{
-    overflow-x:auto;
-    padding:20px;
+  .preview-container {
+    overflow-x: auto;
+    padding: 20px;
   }
-
-  /* 2. Forzar columnas a vertical */
-
 
   /* 3. Desactivar elementos decorativos que rompen el layout */
   [class*="modelo"]::before,
@@ -2053,25 +2054,32 @@ hr{
     display: none !important;
   }
 
-  /* 4. Resetear paddings para que el contenido no se salga */
+  /* 4. Resetear paddings Y AÑADIR MARGENES para separar los bloques */
   [class*="modelo"] section,
   [class*="modelo"] div[class*="sector-"] {
     padding-left: 10px !important;
     padding-right: 10px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    margin-bottom: 25px !important; /* <--- ESTO SEPARA LOS BLOQUES (Experiencia, Formación, etc) */
   }
 
-  /* 5. Ajustar tipografía para móviles */
-  [class*="modelo"] h1 { font-size: 22px !important; text-align: center !important; }
-  [class*="modelo"] h3 { font-size: 16px !important; }
-  [class*="modelo"] p { font-size: 13px !important; }
+  /* 5. Ajustar tipografía y separar párrafos internos */
+  [class*="modelo"] h1 { font-size: 22px !important; text-align: center !important; margin-bottom: 10px !important; }
+  [class*="modelo"] h3 { font-size: 16px !important; margin-bottom: 8px !important; }
+
+  /* ESTO SEPARA CADA LÍNEA DE TEXTO DENTRO DE LOS BLOQUES */
+  [class*="modelo"] p {
+    font-size: 13px !important;
+    margin-bottom: 12px !important; /* <--- SEPARA CADA PÁRRAFO O LÍNEA */
+    line-height: 1.5 !important;
+  }
 
   /* 6. Foto centrada y pequeña */
   [class*="modelo"] .preview-photo {
     width: 100px !important;
     height: 100px !important;
-    margin: 15px auto !important;
+    margin: 15px auto 25px auto !important; /* Separación extra debajo de la foto */
     display: block !important;
   }
 }
