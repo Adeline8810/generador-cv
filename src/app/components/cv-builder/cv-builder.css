@@ -2084,18 +2084,18 @@ hr{
   .cv-preview.modelo4 {
     width: 100% !important;
     display: flex !important;
-    flex-direction: column !important;
     overflow-x: hidden !important; /* Elimina scroll lateral */
     padding: 15px !important;
     min-height: auto !important;
   }
 
-  /* 2. Forzar columnas a vertical */
-  .cv-preview [class*="column"] {
-    width: 100% !important;
-    flex: 1 1 100% !important;
-    display: block !important;
+   .preview-container{
+    overflow-x:auto;
+    padding:20px;
   }
+
+  /* 2. Forzar columnas a vertical */
+
 
   /* 3. Desactivar elementos decorativos que rompen el layout */
   [class*="modelo"]::before,
