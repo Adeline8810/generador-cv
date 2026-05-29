@@ -865,6 +865,74 @@ hr{
 
 }
 
+/**para el celular*/
+/* =========================================================
+   AJUSTES RESPONSIVE PARA MODELO 2
+   ========================================================= */
+@media(max-width: 900px) {
+  /* 1. Asegurar que el CV tome todo el ancho y sea fluido */
+  .cv-preview.modelo2 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  /* 2. Ajustar las columnas para que se apilen correctamente */
+  .modelo2 .left-column,
+  .modelo2 .right-column {
+    width: 100% !important;
+    padding: 10px;
+  }
+
+  /* 3. Escalar los elementos decorativos (Círculos y Curvas) */
+  .modelo2::before { width: 100%; }
+
+  .modelo2 .sector-photo { margin-top: 40px; }
+
+  .modelo2 .sector-nombre {
+    padding-top: 20px;
+    padding-left: 20px;
+    text-align: center;
+  }
+
+  .modelo2 .sector-nombre h1 { font-size: 32px; }
+
+  /* 4. Ajustar espaciados internos de los sectores */
+  .modelo2 .sector-datos,
+  .modelo2 .sector-cualidades,
+  .modelo2 .sector-lenguajes,
+  .modelo2 .sector-pasatiempos,
+  .modelo2 .sector-competencias,
+  .modelo2 .sector-expeciencias,
+  .modelo2 .sector-formacion {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* 5. Ocultar o reducir elementos decorativos que rompen el layout móvil */
+  .modelo2 .sector-formacion::after,
+  .modelo2 .sector-pasatiempos::after {
+    display: none; /* Oculta elementos que se salen de pantalla en móvil */
+  }
+
+  /* 6. Ajustar la foto para que no sea gigante */
+  .modelo2 .preview-photo {
+    width: 150px;
+    height: 150px;
+    border-width: 5px;
+  }
+
+  .modelo2 .sector-photo::before {
+    width: 170px;
+    height: 170px;
+  }
+}
+
+
+
+
+
+
 
 /****MODELO AZUL****/
 /* =========================================================
