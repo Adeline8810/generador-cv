@@ -2072,60 +2072,34 @@ hr{
 
 
 /* =========================================================
-   RESPONSIVE REAL PARA CELULAR
-========================================================= */
-/* =========================================================
-   MOBILE PREMIUM REAL
+   MOBILE REAL SCALE
+   Mantiene el diseño desktop completo
 ========================================================= */
 
-@media (max-width:900px){
+@media screen and (max-width: 900px){
 
   body{
     padding:0;
+    margin:0;
     overflow-x:hidden;
   }
 
   .main-container{
-    display:flex !important;
-    flex-direction:column !important;
-
     width:100%;
-    height:auto;
-
-    overflow:hidden;
+    overflow-x:hidden;
   }
 
-  /* FORMULARIO */
-  .left-panel{
-    width:100% !important;
-    min-width:100% !important;
-
-    padding:15px;
-
-    overflow:visible;
-  }
-
-  /* OCULTAR RESIZER */
-  .resizer{
-    display:none;
-  }
-
-  /* PREVIEW */
   .preview-container{
-
-    width:100% !important;
-
+    width:100%;
     overflow-x:auto;
-    overflow-y:hidden;
 
     display:flex;
-    justify-content:flex-start;
-    align-items:flex-start;
+    justify-content:center;
 
-    padding:20px 10px 80px;
+    padding:20px 0;
   }
 
-  /* CV COMO MINIATURA */
+  /* CV COMPLETO ESCALADO */
   .cv-preview,
   .cv-preview.modelo2,
   .cv-preview.modelo3,
@@ -2134,78 +2108,22 @@ hr{
     width:850px !important;
     min-width:850px !important;
 
-    min-height:1400px;
+    transform:scale(.43);
+    transform-origin:top center;
 
-    transform:scale(.55);
-
-    transform-origin:top left;
-
-    margin-right:-340px;
-    margin-bottom:-620px;
-
-    border-radius:40px;
-
-    flex-direction:row !important;
-  }
-
-  /* MANTIENE COLUMNAS */
-  .left-column{
-    width:33% !important;
-  }
-
-  .right-column{
-    width:67% !important;
+    margin-bottom:-700px;
   }
 
   /* BOTONES */
   .top-bar{
     flex-wrap:wrap;
-    justify-content:center;
-
     gap:10px;
-
     padding:15px;
   }
 
   .top-bar button{
     flex:1 1 auto;
-    min-width:120px;
-  }
-
-  /* FORM */
-  .row-input,
-  .input-with-controls-row{
-
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .controls{
-    width:100%;
-    display:flex;
-    gap:10px;
-  }
-
-  .controls button{
-    flex:1;
-  }
-
-  .input-grid{
-    grid-template-columns:1fr;
-  }
-
-  .date-grid{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .fixed-actions{
-    width:100%;
-    padding:20px;
-  }
-
-  .btn-print{
-    width:100%;
+    min-width:140px;
   }
 
 }
