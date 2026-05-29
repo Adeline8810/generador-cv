@@ -2074,15 +2074,17 @@ hr{
 /* =========================================================
    RESPONSIVE REAL PARA CELULAR
 ========================================================= */
+/* =========================================================
+   MOBILE PREMIUM REAL
+========================================================= */
 
-@media screen and (max-width: 900px){
+@media (max-width:900px){
 
   body{
     padding:0;
     overflow-x:hidden;
   }
 
-  /* CONTENEDOR GENERAL */
   .main-container{
     display:flex !important;
     flex-direction:column !important;
@@ -2090,10 +2092,10 @@ hr{
     width:100%;
     height:auto;
 
-    overflow:visible;
+    overflow:hidden;
   }
 
-  /* PANEL FORMULARIO */
+  /* FORMULARIO */
   .left-panel{
     width:100% !important;
     min-width:100% !important;
@@ -2110,184 +2112,67 @@ hr{
 
   /* PREVIEW */
   .preview-container{
+
     width:100% !important;
 
-    padding:15px 10px 40px;
+    overflow-x:auto;
+    overflow-y:hidden;
 
-    overflow-x:hidden;
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+
+    padding:20px 10px 80px;
   }
 
-  /* HOJA CV */
+  /* CV COMO MINIATURA */
   .cv-preview,
   .cv-preview.modelo2,
   .cv-preview.modelo3,
   .cv-preview.modelo4{
 
-    width:100% !important;
-    min-height:auto !important;
+    width:850px !important;
+    min-width:850px !important;
 
-    border-radius:0;
+    min-height:1400px;
 
-    display:flex !important;
-    flex-direction:column !important;
+    transform:scale(.55);
 
-    overflow:hidden;
+    transform-origin:top left;
+
+    margin-right:-340px;
+    margin-bottom:-620px;
+
+    border-radius:40px;
+
+    flex-direction:row !important;
   }
 
-  /* COLUMNAS */
-  .left-column,
+  /* MANTIENE COLUMNAS */
+  .left-column{
+    width:33% !important;
+  }
+
   .right-column{
-    width:100% !important;
-  }
-
-  /* FONDO LATERAL */
-  .cv-preview.modelo2::before,
-  .cv-preview.modelo3::before,
-  .cv-preview.modelo4::before{
-
-    width:100%;
-    height:420px;
-  }
-
-  /* FIGURA SUPERIOR */
-  .cv-preview.modelo2::after,
-  .cv-preview.modelo3::after,
-  .cv-preview.modelo4::after{
-
-    width:320px;
-    height:320px;
-
-    left:-100px;
-    top:-120px;
-  }
-
-  /* FOTO */
-  .modelo2 .sector-photo,
-  .modelo3 .sector-photo,
-  .modelo4 .sector-photo{
-
-    margin-top:40px;
-  }
-
-  .modelo2 .preview-photo,
-  .modelo3 .preview-photo,
-  .modelo4 .preview-photo{
-
-    width:150px;
-    height:150px;
-  }
-
-  .modelo2 .sector-photo::before,
-  .modelo3 .sector-photo::before,
-  .modelo4 .sector-photo::before{
-
-    width:180px;
-    height:180px;
-  }
-
-  /* NOMBRE */
-  .modelo2 .sector-nombre,
-  .modelo3 .sector-nombre,
-  .modelo4 .sector-nombre{
-
-    padding-top:25px;
-    padding-left:20px;
-    padding-right:20px;
-
-    text-align:center;
-  }
-
-  .modelo2 .sector-nombre h1,
-  .modelo3 .sector-nombre h1,
-  .modelo4 .sector-nombre h1{
-
-    font-size:32px;
-  }
-
-  /* PUESTO */
-  .modelo2 .sector-puesto,
-  .modelo3 .sector-puesto,
-  .modelo4 .sector-puesto{
-
-    padding-left:20px;
-    padding-right:20px;
-
-    margin-top:20px;
-
-    text-align:center;
-  }
-
-  /* FRASE */
-  .modelo2 .sector-frase,
-  .modelo3 .sector-frase,
-  .modelo4 .sector-frase{
-
-    padding:20px;
-
-    text-align:center;
-  }
-
-  /* SECCIONES */
-  .modelo2 .sector-datos,
-  .modelo2 .sector-cualidades,
-  .modelo2 .sector-lenguajes,
-  .modelo2 .sector-pasatiempos,
-  .modelo2 .sector-competencias,
-  .modelo2 .sector-expeciencias,
-  .modelo2 .sector-formacion,
-
-  .modelo3 .sector-datos,
-  .modelo3 .sector-cualidades,
-  .modelo3 .sector-lenguajes,
-  .modelo3 .sector-pasatiempos,
-  .modelo3 .sector-competencias,
-  .modelo3 .sector-expeciencias,
-  .modelo3 .sector-formacion,
-
-  .modelo4 .sector-datos,
-  .modelo4 .sector-cualidades,
-  .modelo4 .sector-lenguajes,
-  .modelo4 .sector-pasatiempos,
-  .modelo4 .sector-competencias,
-  .modelo4 .sector-expeciencias,
-  .modelo4 .sector-formacion{
-
-    padding-left:20px !important;
-    padding-right:20px !important;
-  }
-
-  /* TITULOS */
-  .modelo2 h3,
-  .modelo3 h3,
-  .modelo4 h3{
-
-    font-size:18px !important;
-  }
-
-  /* TEXTO */
-  .modelo2 p,
-  .modelo3 p,
-  .modelo4 p{
-
-    font-size:13px !important;
-  }
-
-  /* EXPERIENCIA */
-  .preview-content{
-    overflow-wrap:break-word;
+    width:67% !important;
   }
 
   /* BOTONES */
-  .fixed-actions{
-    padding:20px 10px;
+  .top-bar{
+    flex-wrap:wrap;
+    justify-content:center;
+
+    gap:10px;
+
+    padding:15px;
   }
 
-  .btn-print{
-    width:100%;
-    font-size:16px;
+  .top-bar button{
+    flex:1 1 auto;
+    min-width:120px;
   }
 
-  /* FORMULARIO RESPONSIVE */
+  /* FORM */
   .row-input,
   .input-with-controls-row{
 
@@ -2305,7 +2190,6 @@ hr{
     flex:1;
   }
 
-  /* INPUT GRID */
   .input-grid{
     grid-template-columns:1fr;
   }
@@ -2313,6 +2197,15 @@ hr{
   .date-grid{
     flex-direction:column;
     align-items:stretch;
+  }
+
+  .fixed-actions{
+    width:100%;
+    padding:20px;
+  }
+
+  .btn-print{
+    width:100%;
   }
 
 }
