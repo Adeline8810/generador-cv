@@ -2075,55 +2075,63 @@ hr{
 /* =========================================================
    SOLUCIÓN GLOBAL PARA TODOS LOS MODELOS (MÓVIL)
    ========================================================= */
-@media screen and (max-width: 900px) {
+@media screen and (max-width:900px){
 
-  /* 1. Resetear el contenedor principal */
+  body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    background:#111;
+  }
+
+  .main-container{
+    display:flex;
+    flex-direction:column;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+  }
+
+  .left-panel{
+    width:100%;
+    padding:15px;
+  }
+
+  .preview-container{
+
+    width:100%;
+    height:100vh;
+
+    overflow:auto;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+
+    padding:20px;
+
+    background:#111;
+  }
+
+  .resizer{
+    display:none;
+  }
+
+  /* CV EXACTO COMO DESKTOP */
   .cv-preview,
   .cv-preview.modelo2,
   .cv-preview.modelo3,
-  .cv-preview.modelo4 {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow-x: hidden !important; /* Elimina scroll lateral */
-    padding: 15px !important;
-    min-height: auto !important;
+  .cv-preview.modelo4{
+
+    width:850px !important;
+    min-width:850px !important;
+
+    min-height:1400px !important;
+
+    transform:scale(.55);
+    transform-origin:top left;
+
+    margin-bottom:-600px;
   }
 
-  /* 2. Forzar columnas a vertical */
-  .cv-preview [class*="column"] {
-    width: 100% !important;
-    flex: 1 1 100% !important;
-    display: block !important;
-  }
-
-  /* 3. Desactivar elementos decorativos que rompen el layout */
-  [class*="modelo"]::before,
-  [class*="modelo"]::after,
-  [class*="modelo"] [class*="::before"],
-  [class*="modelo"] [class*="::after"] {
-    display: none !important;
-  }
-
-  /* 4. Resetear paddings para que el contenido no se salga */
-  [class*="modelo"] section,
-  [class*="modelo"] div[class*="sector-"] {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  /* 5. Ajustar tipografía para móviles */
-  [class*="modelo"] h1 { font-size: 22px !important; text-align: center !important; }
-  [class*="modelo"] h3 { font-size: 16px !important; }
-  [class*="modelo"] p { font-size: 13px !important; }
-
-  /* 6. Foto centrada y pequeña */
-  [class*="modelo"] .preview-photo {
-    width: 100px !important;
-    height: 100px !important;
-    margin: 15px auto !important;
-    display: block !important;
-  }
 }
