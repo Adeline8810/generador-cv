@@ -497,21 +497,69 @@ cambiarIdiomaFinal(event: Event) {
 
 
 imprimir() {
-    const data = this.el.nativeElement;
 
-    html2canvas(data, { scale: 2 }).then(canvas => {
-      const imgWidth = 208; // Ancho A4 en mm
-      const pageHeight = 295; // Alto A4 en mm
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  const data = this.el.nativeElement;
 
-      const contentDataURL = canvas.toDataURL('image/png');
-      let pdf = new jsPDF('p', 'mm', 'a4');
+  html2canvas(data, {
+    scale: 3,
+    useCORS: true,
+    scrollY: -window.scrollY,
+    scrollX: 0,
+    backgroundColor: "#ffffff"
+  }).then(canvas => {
 
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, imgWidth, imgHeight);
-      pdf.save('Mi_CV_Profesional.pdf');
-    });
-  }
+    const pdf = new jsPDF('p', 'mm', 'a4');
 
+    const pageWidth = 210;
+    const pageHeight = 297;
+
+    const imgWidth = pageWidth;
+
+    const imgHeight =
+      (canvas.height * imgWidth) / canvas.width;
+
+    const imgData = canvas.toDataURL('image/png');
+
+    // margen superior de seguridad
+    const margenSuperior = 5;
+
+    let heightLeft = imgHeight;
+    let position = margenSuperior;
+
+    pdf.addImage(
+      imgData,
+      'PNG',
+      0,
+      position,
+      imgWidth,
+      imgHeight
+    );
+
+    heightLeft -= pageHeight;
+
+    while (heightLeft > 0) {
+
+      position = heightLeft - imgHeight + margenSuperior;
+
+      pdf.addPage();
+
+      pdf.addImage(
+        imgData,
+        'PNG',
+        0,
+        position,
+        imgWidth,
+        imgHeight
+      );
+
+      heightLeft -= pageHeight;
+    }
+
+    pdf.save('Mi_CV_Profesional.pdf');
+
+  });
+
+}
   descargar(formato: string) {
   if (formato === 'pdf') {
     this.imprimir(); // Tu función actual de PDF

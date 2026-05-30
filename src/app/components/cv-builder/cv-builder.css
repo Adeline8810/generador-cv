@@ -6,6 +6,7 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
+  margin-bottom: 10px;
 }
 
 body{
@@ -22,10 +23,10 @@ body{
 .main-container{
   display:grid;
   grid-template-columns:400px 10px 1fr;
-  height:100vh;
+  min-height:100vh;
   width:100vw;
   background:#f4f4f9;
-  overflow:hidden;
+  overflow:visible;
 }
 
 .top-bar{
@@ -209,15 +210,27 @@ button{
 ========================================================= */
 
 .cv-preview.modelo2{
-  width:850px;
-  min-height:1400px;
+
   background:#f7f3f8;
   border-radius:42px;
-  overflow:hidden;
   position:relative;
   display:flex;
   font-family:'Poppins',sans-serif;
   box-shadow:0 10px 35px rgba(0,0,0,.25);
+
+
+  min-height: 1400px; /* Mantén un mínimo para que no se vea vacío */
+
+
+
+    width:850px;
+
+  height:auto !important;
+  min-height:auto !important;
+
+  overflow:visible !important;
+  padding-top:40px !important;
+
 }
 
 .left-column{
@@ -258,22 +271,23 @@ z-index:0;
 }
 
 .cv-preview.modelo2::after{
-content:"";
-position:absolute;
-top:-180px;
-left:-130px;
-width:450px;
-height:480px;
-background:#6f2878;
+  content:"";
+  position:absolute;
+  top:-180px;
+  left:-130px;
+  width:450px;
+  height:480px;
+  background:#6f2878;
 
-border-radius:
-55% 45% 60% 40% /
-60% 40% 55% 45%;
+  border-radius:
+  55% 45% 60% 40% /
+  60% 40% 55% 45%;
 
-transform:rotate(-10deg);
-z-index:0;
+  transform:rotate(-10deg);
+  z-index:0;
+
+  display:none !important;
 }
-
 /* =========================================================
 CAPAS
 ========================================================= */
@@ -322,6 +336,7 @@ background:#6f2878;
 
 border-radius:50%;
 z-index:-1;
+display:none !important;
 }
 
 .modelo2 .preview-photo{
@@ -427,36 +442,42 @@ padding:
 45px;
 }
 
-.modelo2 .sector-datos::before{
-content:"🖤 CONTACTO";
-
-display:block;
-
-color:#5f0d62;
-
-font-size:18px;
-font-weight:800;
-
-margin-bottom:22px;
-
-text-transform:uppercase;
+.modelo2 .sector-datos h3 {
+  color: #5f0d62;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 14px;
 }
 
-.modelo2 .sector-datos h3{
-margin-bottom:14px;
-
-color:#67596b;
-
-font-size:12px;
-
-line-height:1.7;
-
-font-weight:500;
-
-border:none;
-padding:0;
-margin-top:0;
+.modelo2 .sector-datos h3::before{
+content:" 👤 ";
 }
+
+.modelo2 .sector-datos p{
+margin:7px 0;
+
+color:#65586a;
+
+font-size:11px;
+
+line-height:1.6;
+
+padding-left:16px;
+
+position:relative;
+}
+.modelo2 .sector-datos p::before{
+content:"•";
+
+position:absolute;
+left:0;
+
+color:#6f2878;
+}
+
+
+
 
 /* =========================================================
 COMPETENCIAS
@@ -468,6 +489,7 @@ padding:
 74px
 15px
 58px;
+position:relative;
 }
 
 .modelo2 .sector-competencias h3{
@@ -526,9 +548,6 @@ content:"💼 ";
 }
 
 
-
-
-
 .modelo2 .preview-content{
 margin-bottom:18px;
 }
@@ -546,7 +565,7 @@ line-height:1.9;
 .modelo2 .preview-content strong{
 color:#5f0d62;
 
-font-size:12px;
+font-size:18px;
 
 font-weight:700;
 }
@@ -563,6 +582,7 @@ padding:
 58px;
 
 position:relative;
+
 }
 
 
@@ -607,7 +627,7 @@ margin-bottom:18px;
 color:#5f0d62;
 
 font-size:18px;
-font-weight:800;
+font-weight:500;
 
 text-transform:uppercase;
 
@@ -618,6 +638,7 @@ padding:0;
 .modelo2 .sector-cualidades h3::before{
 content:"👍 ";
 }
+
 
 .modelo2 .sector-cualidades p{
 margin:7px 0;
@@ -660,7 +681,7 @@ margin-bottom:18px;
 color:#5f0d62;
 
 font-size:18px;
-font-weight:800;
+font-weight:500;
 
 text-transform:uppercase;
 
@@ -713,7 +734,7 @@ margin-bottom:18px;
 color:#5f0d62;
 
 font-size:18px;
-font-weight:800;
+font-weight:500;
 
 text-transform:uppercase;
 
@@ -979,6 +1000,8 @@ hr{
   line-height:1.1;
 
   text-transform:uppercase;
+
+
 }
 
 /* =========================================================
@@ -2038,6 +2061,7 @@ hr{
     overflow-x: hidden !important; /* Elimina scroll lateral */
     padding: 15px !important;
     min-height: auto !important;
+
   }
 
    .preview-container{
@@ -2060,14 +2084,19 @@ hr{
   [class*="modelo"] section,
   [class*="modelo"] div[class*="sector-"] {
     padding-left: 10px !important;
-    padding-right: 10px !important;
+    padding-right: 5px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    font-size:10px;
+    font-weight:500;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 1px;
   }
 
   /* 5. Ajustar tipografía para móviles */
   [class*="modelo"] h1 { font-size: 22px !important; text-align: center !important; }
-  [class*="modelo"] h3 { font-size: 16px !important; }
+  [class*="modelo"] h3 { font-size: 10px !important; }
   [class*="modelo"] p { font-size: 13px !important; }
 
   /* 6. Foto centrada y pequeña */
@@ -2077,4 +2106,79 @@ hr{
     margin: 15px auto !important;
     display: block !important;
   }
+}
+
+
+@media print {
+  /* 1. Fuerza el diseño a una sola columna */
+  .modelo2, .modelo3, .modelo4 {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    background: #ffffff !important; /* Fondo blanco para imprimir */
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* 2. Oculta las formas decorativas que estorban */
+  .modelo2::before, .modelo2::after,
+  .modelo3::before, .modelo3::after,
+  .modelo4::before, .modelo4::after,
+  .modelo2 .sector-photo::before,
+  .modelo3 .sector-photo::before,
+  .modelo4 .sector-photo::before {
+    display: none !important;
+  }
+
+  /* 3. Ajusta las columnas para que se apilen */
+  .left-column, .right-column {
+    width: 100% !important;
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  /* 4. Asegura que el texto sea negro y legible */
+  * {
+    color: #000000 !important;
+    background-color: transparent !important;
+    text-shadow: none !important;
+  }
+
+  /* 5. Reduce los tamaños de fuente globales para que quepan en una hoja */
+  h1 { font-size: 20pt !important; }
+  h3 { font-size: 12pt !important; }
+  p { font-size: 10pt !important; }
+
+  /* 6. Centra la foto */
+  .preview-photo {
+    display: block !important;
+    margin: 0 auto !important;
+  }
+
+.preview-content, .card, section {
+    break-inside: avoid;
+  }
+
+  /* Fuerza a que los títulos grandes siempre comiencen en una parte limpia si es necesario */
+  h3 {
+    break-after: avoid;
+  }
+
+/* Oculta decoraciones que rompen el diseño en papel */
+  .cv-preview::before, .cv-preview::after { display: none !important; }
+
+}
+
+
+.cv-print-ready {
+  width: 210mm;
+  padding: 10mm;
+  background: white;
+  color: black;
+  box-sizing: border-box;
+}
+
+.cv-print-ready .cv-preview {
+  height: auto !important;
+  overflow: visible !important;
 }
